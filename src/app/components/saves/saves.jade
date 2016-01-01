@@ -1,0 +1,13 @@
+.container
+  div
+    acme-navbar
+  .row
+    div 
+      .jumbotron.text-center
+        h1 Here's where you save money
+        h2 You saved 
+          label.label-success {{ controller.totalSaved() | currency }}
+      
+  .row
+    
+    

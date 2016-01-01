@@ -1,0 +1,20 @@
+'use strict'
+
+var conf = require('./conf');
+var gulp = require('gulp');
+
+var $ = require('gulp-load-plugins')();
+
+gulp.task('deploy', ['build'], () => {
+  const publisher = $.awspublish.create(conf.aws);
+  
+  const headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+  };
+
+  return gulp.src('dist/**/*.*')
+    .pipe(publisher.publish(headers))
+    .pipe(publisher.sync())
+    .pipe(publisher.cache())
+    .pipe($.awspublish.reporter());
+});
