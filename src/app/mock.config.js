@@ -1,6 +1,18 @@
 export function mockConfig ($provide, environmentConfig) {
   'ngInject';
   if(environmentConfig.mock){
+    
+    $provide.decorator('goalsService', ($delegate, $timeout, moment)=>{
+      $delegate.getGoal = ()=>{
+        return $timeout(()=> {
+          return {
+              amount: 20000,
+              date : moment('2016-07-05')
+            }
+        }, 1000);
+      };
+      return $delegate;      
+    });
         
     $provide.decorator('savesService', ($delegate, $timeout, moment)=>{
       $delegate.getSaves = ()=>{
@@ -18,6 +30,12 @@ export function mockConfig ($provide, environmentConfig) {
             },{
               amount: 700,
               date : moment('2015-09-05')
+            },{
+              amount: 1200,
+              date : moment('2015-10-05')
+            },{
+              amount: 1200,
+              date : moment('2015-10-05')
             },{
               amount: 1200,
               date : moment('2015-10-05')

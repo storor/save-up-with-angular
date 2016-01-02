@@ -6,8 +6,10 @@
       .jumbotron.text-center
         h1 Here's where you save money
         h2 You saved 
-          label.label-success {{ controller.totalSaved() | currency }}
+          strong{{ controller.totalSaved() | currency }}
+        .round-progress-wrapper
+          .ng-cloak.round-progress-title
+            | {{controller.percent()}}%
+          div(round-progress max="controller.goal" rounded="true"  current="controller.totalSaved()" responsive="true" bgcolor="rgb(157, 157, 157)" color="#5CB85C")
       
   .row
-    
-    

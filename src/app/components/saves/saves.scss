@@ -1,0 +1,18 @@
+.round-progress-wrapper{
+    position: relative;
+    width: 40%;
+    margin:20px auto;
+    font-size: 40px;
+}
+.round-progress-title{
+    position: absolute;
+    font-weight: 100;
+    line-height: 1;
+    top: 50%;
+    bottom: auto;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    -moz-transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    font-size: 44px;
+}
