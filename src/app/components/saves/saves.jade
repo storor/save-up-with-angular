@@ -2,14 +2,11 @@
   div
     acme-navbar
   .row
-    div 
+    div.col-lg-8.col-md-8.col-sm-12 
       .jumbotron.text-center
         h1 Here's where you save money
         h2 You saved 
-          strong{{ controller.totalSaved() | currency }}
-        .round-progress-wrapper
-          .ng-cloak.round-progress-title
-            | {{controller.percent()}}%
-          div(round-progress max="controller.goal" rounded="true"  current="controller.totalSaved()" responsive="true" bgcolor="rgb(157, 157, 157)" color="#5CB85C")
-      
-  .row
+          strong {{ controller.totalSaved | currency }}
+    div.col-lg-4.col-md-4.col-sm-12
+      pie-chart.pie-donut-chart(data='controller.donutData' options='controller.donutOptions')
+        

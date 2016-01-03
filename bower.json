@@ -15,7 +15,7 @@
     "animate.css": "~3.4.0",
     "bootstrap-sass": "~3.3.5",
     "moment": "~2.10.6",
-    "angular-svg-round-progressbar": "~0.3.9"
+    "pie-chart": "https://github.com/n3-charts/pie-chart.git#~1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
@@ -30,6 +30,12 @@
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
       ]
+    },
+    "d3":{
+      "main": ["d3.min.js"]
     }
+  },
+  "resolutions": {
+    "angular": "~1.4.2"
   }
 }
