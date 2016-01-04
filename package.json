@@ -1,7 +1,9 @@
 {
   "name": "save-up",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "n3-charts": "^2.0.3"
+  },
   "scripts": {
     "test": "gulp test"
   },

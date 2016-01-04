@@ -18,6 +18,34 @@ export class SavesController{
     this.donutData = [];
     
     this.init();
+    
+    this.options = {
+      margin: {top: 5},
+      series: [
+        {
+          axis: "y",
+          dataset: "saves",
+          key: "amount",
+          label: "Saves",
+          color: "hsla(88, 48%, 48%, 1)",
+          type: ["dot", "line", "area"],
+          id: "mySeries0"
+        }
+      ],
+      axes: {
+        x: {
+          key: 'date',
+          type: 'date'
+        },
+        y: {
+          min: 0
+        }
+      }
+    };
+    
+    this.data = {
+      saves: this.saves
+    };   
   }
   
   init(){
@@ -27,7 +55,7 @@ export class SavesController{
   
   getSaves(){
     this.savesService.getSaves().then((saves)=>{
-      this.saves = saves;      
+      this.saves.push.apply(this.saves, saves);      
       this.getTotalSaved();
       this.getDonutData();
     });

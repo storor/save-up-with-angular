@@ -7,7 +7,7 @@ export function mockConfig ($provide, environmentConfig) {
         return $timeout(()=> {
           return {
               amount: 20000,
-              date : moment('2016-07-05')
+              date : moment('2016-07-05').toDate()
             }
         }, 1000);
       };
@@ -20,25 +20,25 @@ export function mockConfig ($provide, environmentConfig) {
           return [
             {
               amount: 1000,
-              date : moment('2015-06-05')
+              date : moment('2015-06-05').toDate()
             },{
               amount: 500,
-              date : moment('2015-07-05')
+              date : moment('2015-07-05').toDate()
             },{
               amount: 500,
-              date : moment('2015-08-05')
+              date : moment('2015-08-05').toDate()
             },{
               amount: 700,
-              date : moment('2015-09-05')
+              date : moment('2015-09-05').toDate()
             },{
               amount: 1200,
-              date : moment('2015-10-05')
+              date : moment('2015-10-05').toDate()
             },{
               amount: 1200,
-              date : moment('2015-10-05')
+              date : moment('2015-10-05').toDate()
             },{
               amount: 1200,
-              date : moment('2015-10-05')
+              date : moment('2015-11-05').toDate()
             }
           ];
         }, 1000);
