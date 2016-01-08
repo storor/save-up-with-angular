@@ -9,13 +9,17 @@ export class SavesController{
     
     this.isReady = "ready";
     this.saves = [];
-    this.goal = 0;
-    this.totalSaved = 0;
+    this.goal = {};
     this.donutOptions = {
       thickness: 5,
-      mode: 'gauge'
+      mode: 'gauge',
+      total: this.goal.amount
     }
-    this.donutData = [];
+    this.donutData = [{
+      label: 'Saved',
+      value: this.totalSaved(),
+      color: '#5cb85c'
+    }]
     
     this.init();
     
@@ -56,32 +60,38 @@ export class SavesController{
   getSaves(){
     this.savesService.getSaves().then((saves)=>{
       this.saves.push.apply(this.saves, saves);      
-      this.getTotalSaved();
-      this.getDonutData();
     });
   }
   
   getGoal(){
     this.goalsService.getGoal().then((goal)=>{
-      this.goal = goal.amount;
-      this.donutOptions.total = this.goal;
+      this.goal = goal;
     });
   }
   
-  getTotalSaved(){
+  totalSaved(){
     var total = 0;
     for(var save of this.saves){
       total += save.amount;
-    }    
-    this.totalSaved = total;
+    }  
+    this.$log.info(total);  
+    return total;
   }
   
   getDonutData(){
-    this.donutData = [{
-      label: 'Saved',
-      value: this.totalSaved,
-      color: '#5cb85c'
-    }];
-    this.$log.info(this.donutData);
-  }  
+    this.donutData[0].value = this.totalSaved()
+    return this.donutData;
+  }
+  
+  getDonutOptions(){
+    this.donutOptions.total = this.goal.amount;
+    return this.donutOptions;
+  }
+  
+  save(){
+    this.saves.push({
+      date: new Date(),
+      amount: +this.newSave
+    });
+  }
 }
