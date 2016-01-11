@@ -16,17 +16,18 @@
     div.col-lg-4.col-md-4.col-sm-12
       h2 Saves
       ul.unstyled
-        li(ng-repeat='save in controller.saves')
+        li(ng-repeat='save in controller.goal.saves')
           span.label.label-success
             | {{save.amount | currency }}
           span.label.label-primary
             | {{save.date | date }}
       form(ng-submit='controller.save()')
         input(type="text" ng-model="controller.newSave" size="20" placeholder="put money here")
+        input(type="date" ng-model="controller.newDate")
         input.btn.btn-primary(type="submit" value="save")
         
   .row
     div(style="height: 300px;")
-      linechart(data="controller.data" options="controller.options")
+      linechart(data="controller.goal" options="controller.options")
     
         

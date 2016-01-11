@@ -9,6 +9,10 @@ export class GoalsService extends FirebaseService{
   }  
   
   getGoal(){
-    return this.wrap(this.$firebaseObject(this.firebase));
-  } 
+    return this.$firebaseObject(this.firebase).$loaded();
+  }
+  
+  commit(goal){
+    return goal.$save();
+  }
 }

@@ -4,7 +4,6 @@ import { mockConfig } from './mock.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { SavesController } from './components/saves/saves.controller';
-import { SavesService } from './shared/saves/saves.service';
 import { GoalsService } from './shared/goals/goals.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 require('../../node_modules/n3-charts/build/LineChart.js')
@@ -16,6 +15,5 @@ angular.module('saveUp', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ng
   .config(routerConfig)
   .run(runBlock)
   .controller('SavesController', SavesController)
-  .service('savesService', SavesService)
   .service('goalsService', GoalsService)
   .directive('acmeNavbar', NavbarDirective);
