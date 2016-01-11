@@ -3,6 +3,7 @@ export function mockConfig ($provide, environmentConfig) {
   if(environmentConfig.mock){
     
     $provide.decorator('goalsService', ($delegate, $timeout, moment)=>{
+      $delegate.init = ()=> {};
       $delegate.getGoal = ()=>{
         return $timeout(()=> {
           return {
@@ -15,6 +16,7 @@ export function mockConfig ($provide, environmentConfig) {
     });
         
     $provide.decorator('savesService', ($delegate, $timeout, moment)=>{
+      $delegate.init = ()=> {};
       $delegate.getSaves = ()=>{
         return $timeout(()=> {
           return [

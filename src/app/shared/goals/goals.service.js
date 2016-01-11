@@ -1,7 +1,14 @@
-export class GoalsService{
-  constructor ($log) {
+import {FirebaseService} from '../firebase-service';
+
+export class GoalsService extends FirebaseService{
+  constructor ($log, $timeout, environmentConfig, $firebaseObject) {
     'ngInject';
-    
-    this.$log = $log;
-  }
+    super($log, $timeout, environmentConfig);
+    this.path = 'goal';
+    this.$firebaseObject = $firebaseObject;    
+  }  
+  
+  getGoal(){
+    return this.wrap(this.$firebaseObject(this.firebase));
+  } 
 }

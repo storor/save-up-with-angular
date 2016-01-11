@@ -53,13 +53,15 @@ export class SavesController{
   }
   
   init(){
+    this.savesService.init();
+    this.goalsService.init();
     this.getGoal();
     this.getSaves();    
   }
   
   getSaves(){
     this.savesService.getSaves().then((saves)=>{
-      this.saves.push.apply(this.saves, saves);      
+      this.saves =  saves;      
     });
   }
   
@@ -89,7 +91,7 @@ export class SavesController{
   }
   
   save(){
-    this.saves.push({
+    this.saves.$add({
       date: new Date(),
       amount: +this.newSave
     });
