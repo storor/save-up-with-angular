@@ -5,7 +5,7 @@ var gulp = require('gulp');
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('deploy', ['build'], () => {
+gulp.task('deploy-aws', ['build'], () => {
   const publisher = $.awspublish.create(conf.aws);
   
   const headers = {
@@ -17,4 +17,10 @@ gulp.task('deploy', ['build'], () => {
     .pipe(publisher.sync())
     .pipe(publisher.cache())
     .pipe($.awspublish.reporter());
+});
+
+gulp.task('deploy-gh', ['build'], () => {
+  var ghPages =  $.ghPages;
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 });
